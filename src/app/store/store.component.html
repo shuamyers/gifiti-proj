@@ -1,0 +1,45 @@
+<section class="store">
+
+  <div class="herder">
+
+    <h1 class="title">{{title}}</h1>
+
+    <div class="filters">
+      <div class="select">
+        <select (ngModelChange)="onGenderSelect($event)" [(ngModel)]="genderSelected">
+          <option *ngFor="let gender of data.GenderFilter" [value]="gender.TagId">{{gender.DisplayText}}</option>
+          <option [value]="null">All Genders</option>
+        </select>
+      </div>
+
+      <div class="select">
+        <select (ngModelChange)="onPriceRangSelect($event)" [(ngModel)]="priceRangeSelected">
+          <option *ngFor="let budget of mapPriceFilters(); let i = index" [value]="budget.Value">
+             <span *ngIf=" i !==  mapPriceFilters().length -1 ">{{budget.minDisplay}}- </span> 
+             {{budget.maxDisplay}}
+            </option>
+          <option [value]="null">All Price Range</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="list-container">
+    <ul *ngFor="let product of flattenedProducts" class="list-of-products clean-list">
+      <li class="products">
+        <div>
+          <img [src]="product.ProductImage" class="product-img" >
+          <div class="product-info">
+            <span class="store-name">{{product.storeName}}</span>
+            <br>
+            <span class="price">${{product.Price}}</span>
+            <br>
+            <span class="product-name">{{product.ProductTitle | slice: 0: 20}}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</section>

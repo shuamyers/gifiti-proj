@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+html{
+    background-image: url(https://d1tjkdzh41th2j.cloudfront.net/GiftitWebImages/evitebg.jpg);
+    background-size: cover;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
